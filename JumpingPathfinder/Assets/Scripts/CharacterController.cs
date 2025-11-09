@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float gravityStrength;
+    [SerializeField] private float linearDamping;
 
     private Vector2 moveAxis;
     private int numGroundObjects;
@@ -25,7 +26,17 @@ public class PlayerController : MonoBehaviour
         Move();
         Gravity();
     }
+    private void Update()
+    {
+        Dampen();
+    }
 
+
+    //custom dampen function because rb dampening was affecting jumping
+    private void Dampen()
+    {
+        rb.linearVelocity = (new Vector3(rb.linearVelocity.x,0,rb.linearVelocity.z) * Mathf.Pow(linearDamping, Time.deltaTime)) + new Vector3(0, rb.linearVelocity.y, 0);
+    }
     private void Gravity()
     {
         rb.AddForce(Vector3.down * gravityStrength, ForceMode.Force);
@@ -34,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 finalMove = moveAxis.normalized;
         Vector3 finalMove3D = new Vector3(finalMove.x, 0, finalMove.y);
+        if(rb.linearVelocity.x != 0 || rb.linearVelocity.z != 0) transform.forward = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         rb.AddForce(finalMove3D * speed, ForceMode.Force);
     }
     private void Jump()
@@ -44,12 +56,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void UpdateMoveInput(InputAction.CallbackContext context)
+    public void UpdateMoveInput(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
         moveAxis = context.ReadValue<Vector2>();
-        Debug.Log(moveAxis);
     }
-    public void JumpInput(InputAction.CallbackContext context)
+    public void JumpInput(InputAction.CallbackContext context = new InputAction.CallbackContext())
     {
         if(context.started)
         {
