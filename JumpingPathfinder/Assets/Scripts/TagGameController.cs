@@ -6,6 +6,7 @@ public class TagGameController : MonoBehaviour
     static bool initTaggedPlayer = false;
     static List<TagPlayer> tagPlayers;
 
+    private static float tagForce = 8;
 
     private void Awake()
     {
@@ -27,6 +28,10 @@ public class TagGameController : MonoBehaviour
         }
     }
 
+    public static float GetTagForce()
+    {
+        return tagForce;
+    }
     public static void AddTagPlayer(TagPlayer player)
     {
         tagPlayers.Add(player);
@@ -35,4 +40,26 @@ public class TagGameController : MonoBehaviour
     {
         return tagPlayers;
     }
+
+
+
+    public static bool GetColorTagged(PlayerColor color)
+    {
+        for (int i = 0; i < tagPlayers.Count; i++)
+        {
+            bool colorSame = tagPlayers[i].GetColor() == color;
+            if (tagPlayers[i].GetColor() == color && tagPlayers[i].GetTagged())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+[System.Serializable]
+public enum PlayerColor
+{
+    Blue,
+    Red
 }
