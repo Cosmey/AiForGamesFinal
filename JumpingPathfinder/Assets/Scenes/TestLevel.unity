@@ -1571,6 +1571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83183710}
+  - component: {fileID: 83183711}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -2086,6 +2087,18 @@ Transform:
   - {fileID: 1426574510}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &83183711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83183709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145165ce0cd14f644b8fcc8f49ee9bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavMesh
 --- !u!1 &83836919
 GameObject:
   m_ObjectHideFlags: 0
@@ -39590,6 +39603,7 @@ GameObject:
   - component: {fileID: 1434115599}
   - component: {fileID: 1434115598}
   - component: {fileID: 1434115605}
+  - component: {fileID: 1434115606}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Tag Player
@@ -39772,6 +39786,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TagPlayer
   playerColor: 1
   taggedIndicatorMaterial: {fileID: 2100000, guid: 3f8504cf1ccf2924b9b83b4441e8a90e, type: 2}
+--- !u!114 &1434115606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434115597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95582aa2eb757e547b88e728bf6ccfd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIPlayer
 --- !u!1 &1435686659
 GameObject:
   m_ObjectHideFlags: 0
