@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 public class CharacterController : MonoBehaviour
 {
 
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpPower;
-    [SerializeField] private float gravityStrength;
-    [SerializeField] private float linearDamping;
+    public float speed;
+    public float jumpPower;
+    public float gravityStrength;
+    public float linearDamping;
 
     private Vector2 moveAxis;
     private int numGroundObjects;
